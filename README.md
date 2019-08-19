@@ -1,6 +1,6 @@
 # Hearthstone Deckstrings
 
-deckstrings.now.sh
+[deckstrings.now.sh](deckstrings.now.sh)
 
 Simple little app to convert Hearthstone Deckstrings
 
