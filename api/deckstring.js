@@ -29,20 +29,16 @@ function convertDeck(deck) {
 
 module.exports = (req, res) => {
 	const { body } = req
-	console.log('\nReq: ', req, '\n')
-	console.log('\nBody: ', body, '\n')
 
 	if (!body.deckstring) {
 		return res.status(400).send('You need to provide a deckstring.')
 	}
 
 	try {
-		console.log('body.deckstring: ', body.deckstring)
 		let decoded = decode(body.deckstring)
 		let deck = convertDeck(decoded)
 		return res.status(200).json(deck)
 	} catch (err) {
-		console.log(`Error: ${err.message}`)
 		return res.status(400).send('Invalid deckstring provided. Try again.')
 	}
 }

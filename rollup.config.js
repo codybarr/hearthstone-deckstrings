@@ -1,10 +1,12 @@
-import svelte from 'rollup-plugin-svelte';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import livereload from 'rollup-plugin-livereload';
-import { terser } from 'rollup-plugin-terser';
+import svelte from 'rollup-plugin-svelte'
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+import livereload from 'rollup-plugin-livereload'
+import { terser } from 'rollup-plugin-terser'
+import postcss from 'rollup-plugin-postcss'
+import autoPreprocess from 'svelte-preprocess'
 
-const production = !process.env.ROLLUP_WATCH;
+const production = !process.env.ROLLUP_WATCH
 
 export default {
 	input: 'src/main.js',
@@ -16,13 +18,19 @@ export default {
 	},
 	plugins: [
 		svelte({
-			// enable run-time checks when not in production
+			preprocess: autoPreprocess({
+				postcss: true
+			}),
 			dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
 			css: css => {
-				css.write('public/bundle.css');
+				css.write('public/bundle.css')
 			}
+		}),
+
+		postcss({
+			extract: 'public/styles.css'
 		}),
 
 		// If you have external dependencies installed from
@@ -32,7 +40,8 @@ export default {
 		// https://github.com/rollup/rollup-plugin-commonjs
 		resolve({
 			browser: true,
-			dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/')
+			dedupe: importee =>
+				importee === 'svelte' || importee.startsWith('svelte/')
 		}),
 		commonjs(),
 
@@ -47,4 +56,4 @@ export default {
 	watch: {
 		clearScreen: false
 	}
-};
+}
