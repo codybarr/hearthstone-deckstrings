@@ -57,7 +57,6 @@
 	{#if loaded}
 		<img
 			class="absolute"
-			class:visible={showImage}
 			class:invisible={!showImage}
 			style="top: {pos.y}px; left: {pos.x}px"
 			width="250"
