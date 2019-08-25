@@ -44,10 +44,11 @@
 			class="bg-gray-200 text-base text-gray-700 border border-gray-300 rounded
 			px-3 mr-5 leading-tight focus:outline-none focus:bg-white w-96"
 			type="text"
+			aria-label="Enter deckstring"
 			placeholder="enter deckstring"
 			bind:value={deckstring} />
 		<button
-			class="px-5 py-2 bg-blue-500 text-white text-base mr-5 rounded
+			class="px-5 py-2 bg-blue-600 text-white text-base mr-5 rounded
 			hover:bg-blue-700"
 			on:click|preventDefault={submit}>
 			Submit
