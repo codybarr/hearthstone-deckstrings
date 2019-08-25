@@ -48,8 +48,8 @@
 			placeholder="enter deckstring"
 			bind:value={deckstring} />
 		<button
-			class="px-5 py-2 bg-blue-600 text-white text-base mr-5 rounded
-			hover:bg-blue-700"
+			class="px-5 py-2 bg-blue-700 text-white text-base mr-5 rounded
+			hover:bg-blue-300 hover:text-gray-900"
 			on:click|preventDefault={submit}>
 			Submit
 		</button>
